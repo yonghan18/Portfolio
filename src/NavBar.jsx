@@ -24,7 +24,11 @@ const NavBar = () => {
 
   const handleToggle = () => {
     setIsToggled((prev) => !prev);
-  }
+  };
+
+  const closeMenu = () => {
+    setIsToggled(false);
+  };
 
   return (
     <header 
@@ -37,11 +41,11 @@ const NavBar = () => {
 
           <button 
             onClick={handleToggle}
-            className="text-neutral-400 hover:text-white focus:outline-none sm:hidden flex"
-            aria-label="Toggle menu">
-            <img src={isToggled ? "assets/close.svg" : "assets/menu.svg"} alt="toggle" className="w-6 h-6" />
-          </button> 
-
+            <motion.img 
+              src={isToggled ? "assets/close.svg" : "assets/menu.svg"} 
+              alt="toggle" 
+              className="w-6 h-6"
+            />
           
           <nav className="sm:flex hidden">
             <NavItems />
@@ -49,15 +53,15 @@ const NavBar = () => {
           
         </div>
       </div>
-      <div className={`nav-sidebar ${isToggled ? 'max-h-screen' : 'max-h-0'}`}>
-        <nav className="p-5">
-          <NavItems />
-        </nav>
-      </div>
-
-    </header>
-  )
-
-}
+        {isToggled && (
+          <motion.div 
+            className="nav-sidebar overflow-hidden"
+          >
+            <motion.nav 
+            >
+              <NavItems onClick={closeMenu} />
+            </motion.nav>
+          </motion.div>
+        )}
 
 export default NavBar;
