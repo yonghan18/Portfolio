@@ -2,6 +2,8 @@
 import { MdAccountCircle } from "react-icons/md";
 import { TypeAnimation } from "react-type-animation";
 import { RiArrowDownDoubleLine } from "react-icons/ri";
+import { motion } from "framer-motion";
+
 const TypeComponent = () => {
     return (
         <TypeAnimation
@@ -23,7 +25,7 @@ const TypeComponent = () => {
             repeat={Infinity}
         />
     );
-}
+};
 
 const FloatingElements = () => {
     const floatingVariants = {
@@ -65,6 +67,7 @@ const FloatingElements = () => {
     };
 
     return (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
             {/* Floating geometric shapes */}
             <motion.div 
                 className="absolute top-20 left-10 w-2 h-2 bg-cyan-400 rounded-full opacity-60"
@@ -114,37 +117,131 @@ const FloatingElements = () => {
             >
                 {'[]'}
             </motion.div>
-      </div>
+        </div>
     );
-  };
+};
 
 const Hero = () => {
+    const handleScrollDown = () => {
+        const aboutSection = document.getElementById('about');
+        if (aboutSection) {
+            aboutSection.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    };
+
+    const heroVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.8,
+                staggerChildren: 0.2
+            }
+        }
+    };
+
+    const childVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.6 }
+        }
+    };
+
+    const waveVariants = {
+        wave: {
+            rotate: [0, 14, -8, 14, -4, 10, 0],
+            transition: {
+                duration: 2.5,
+                repeat: Infinity,
+                transformOrigin: "70% 70%"
+            }
+        }
+    };
+
+    const arrowVariants = {
+        bounce: {
+            y: [0, 10, 0],
+            transition: {
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut"
+            }
+        },
+        hover: {
+            y: -10,
+            transition: { duration: 0.3 }
+        }
+    };
+
     return(
+        <motion.section 
+            className="min-h-screen w-full relative" 
+            id="home"
+            variants={heroVariants}
+            initial="hidden"
+            animate="visible"
+        >
             <FloatingElements />
             <div className="grid grid-cols-1 sm:grid-cols-12">
-                <div className="w-full mx-auto flex flex-col sm:mt-55 mt-20 c-space gap-3 col-span-8 place-self-center">
-                    <p className="sm:text-5xl text-xl font-medium text-white font-generalsans">
-                    Hi, I am Yong Han <span className="waving-hand">👋</span>
-                    </p>
-                    <TypeComponent/>
-                    <Buttons/>
-                </div>
-                <div className="relative col-span-4 mt-47">
+                <motion.div 
+                    className="w-full mx-auto flex flex-col sm:mt-55 mt-20 c-space gap-3 col-span-8 place-self-center"
+                    variants={childVariants}
+                >
+                    <motion.p 
+                        className="sm:text-5xl text-xl font-medium text-white font-generalsans"
+                        variants={childVariants}
+                    >
+                        Hi, I am Yong Han{' '}
+                        <motion.span 
+                            className="inline-block"
+                            variants={waveVariants}
+                            animate="wave"
+                        >
+                            {'\u{1F44B}'}
+                        </motion.span>
+                    </motion.p>
+                    <motion.div variants={childVariants}>
+                        <TypeComponent/>
+                    </motion.div>
+                    <motion.p 
+                        className="text-neutral-400 text-lg mt-6 max-w-2xl"
+                        variants={childVariants}
+                    >
+                        Crafting digital experiences through code, creativity, and continuous learning
+                    </motion.p>
+                </motion.div>
+                <motion.div 
+                    className="relative col-span-4 mt-47"
+                    variants={childVariants}
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.3 }}
+                >
                     <MdAccountCircle 
                         size="300px"
                         color="white"
                     />
-                </div>
+                </motion.div>
             </div>
-            <div className="place-self-center mt-35 arrow cursor-pointer">
+            <motion.div 
+                className="place-self-center mt-35 cursor-pointer flex justify-center"
+                onClick={handleScrollDown}
+                variants={arrowVariants}
+                animate="bounce"
+                whileHover="hover"
+            >
                 <RiArrowDownDoubleLine
                     color="white"
                     size="40px"
                 />
-            
-            </div>
-        </section>
-    )
-}
+            </motion.div>
+        </motion.section>
+    );
+};
 
 export default Hero;
