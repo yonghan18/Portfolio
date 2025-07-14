@@ -14,6 +14,7 @@ import {
     SiJetpackcompose
 } from 'react-icons/si';
 import { DiJava } from "react-icons/di";
+import { motion, useInView } from 'framer-motion';
 
 const About = () => {
     const techStack = [
@@ -41,8 +42,24 @@ const About = () => {
         techStack.slice(techPerRow, techStack.length)    
     ];
     const TechRow = ({ technologies, rowIndex }) => {
+        // Calculate drag constraints based on number of technologies
+        // Show 4 initially, allow dragging to see the rest
+        const visibleWidth = 4 * 136; // 4 items * (120px width + 16px gap)
+        const totalWidth = technologies.length * 136; // All items width
+        const maxDrag = Math.max(0, totalWidth - visibleWidth);
+
         return (
             <div className="overflow-hidden w-full">
+                <motion.div 
+                    className="flex gap-4 cursor-grab active:cursor-grabbing"
+                    variants={techRowVariants}
+                    drag="x"
+                    dragConstraints={{ left: -maxDrag, right: 0 }}
+                    dragElastic={0.1}
+                    whileDrag={{ scale: 1.02 }}
+                    style={{ width: `${totalWidth}px` }}
+                >
+                </motion.div>
             </div>
 
     return(
