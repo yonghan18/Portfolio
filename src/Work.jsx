@@ -1,5 +1,6 @@
 
-const Projects = () => {
+const ProjectCard = ({ project, index }) => {
+    const { title, description, image, technologies, liveUrl, sourceUrl } = project;
     return (
         <div className="flex sm:flex-col flex-row items-center gap-6 p-6 mt-15">
 
