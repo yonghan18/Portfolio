@@ -16,16 +16,20 @@
   --color-white-700: #d6d9e9;
   --color-white-800: #e4e4e6;
   --color-white: #ffffff;
-
 }
 
 * {
   scroll-behavior: smooth;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: #010103;
   font-family: 'General Sans', sans-serif;
+  overflow-x: hidden;
 }
 
 @layer base {
@@ -51,7 +55,7 @@ body {
 }
 
 @utility nav-li {
-  @apply text-neutral-400 hover:text-white font-generalsans max-sm:hover:bg-black-500 max-sm:w-full max-sm:rounded-md py-2 max-sm:px-5;
+  @apply text-neutral-400 hover:text-white font-generalsans max-sm:hover:bg-black-500 max-sm:w-full max-sm:rounded-md py-2 max-sm:px-5 transition-colors duration-200;
 }
 
 @utility nav-li_a {
@@ -59,62 +63,88 @@ body {
 }
 
 @utility nav-sidebar {
-  @apply absolute left-0 right-0 bg-black-200 backdrop-blur-xs transition-all duration-300 ease-in-out overflow-hidden z-20 mx-auto sm:hidden block;
+  @apply absolute left-0 right-0 bg-black-200 backdrop-blur-sm transition-all duration-300 ease-in-out overflow-hidden z-20 mx-auto sm:hidden block;
 }
 
 @utility text-gray_gradient {
   @apply bg-linear-to-r from-[#BEC1CF] from-60% via-[#D5D8EA] via-60% to-[#D5D8EA] to-100% bg-clip-text text-transparent;
 }
 
-.waving-hand {
-  animation: wave-animation 2.5s infinite;
-  transform-origin: 70% 70%;
-  display: inline-block;
+/* Custom scrollbar for horizontal tech stack */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-@keyframes wave-animation {
-  0% {
-    transform: rotate(0deg);
-  }
-  15% {
-    transform: rotate(14deg);
-  }
-  30% {
-    transform: rotate(-8deg);
-  }
-  40% {
-    transform: rotate(14deg);
-  }
-  50% {
-    transform: rotate(-4deg);
-  }
-  60% {
-    transform: rotate(10deg);
-  }
-  70% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(0deg);
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom scrollbar for tech stack when needed */
+.tech-scrollbar::-webkit-scrollbar {
+  height: 6px;
+}
+
+.tech-scrollbar::-webkit-scrollbar-track {
+  background: rgba(55, 65, 81, 0.3);
+  border-radius: 3px;
+}
+
+.tech-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.5);
+  border-radius: 3px;
+}
+
+.tech-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.7);
+}
+
+/* Line clamp utility */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Responsive text sizing */
+@media (max-width: 640px) {
+  .head-text {
+    @apply text-2xl;
   }
 }
 
-.arrow {
-  animation: bounce 1.5s infinite ease-in-out;
-  transition: transform 0.3s ease-in-out;
+/* Focus styles for accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #06b6d4;
+  outline-offset: 2px;
 }
 
-.arrow:hover {
-  animation: none;
-  transform: translateY(-10px);
+/* Loading states */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
 }
 
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
+/* Grid responsive */
+@media (max-width: 768px) {
+  .grid-responsive {
+    @apply grid-cols-1;
   }
-  50% {
-    transform: translateY(10px);
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .grid-responsive {
+    @apply grid-cols-2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-responsive {
+    @apply grid-cols-3;
   }
 }
 
