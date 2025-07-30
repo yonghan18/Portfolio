@@ -1,11 +1,30 @@
 import { projects } from './constants';
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react'; // 1. Ensure useEffect is imported
 
 const ProjectCard = ({ project, index }) => {
-    const { title, description, image, technologies, liveUrl, sourceUrl } = project;
+    const { title, description, image, video_webm, video_mp4, technologies, liveUrl, sourceUrl } = project;
     const cardRef = useRef(null);
+    const videoRef = useRef(null);
     const isInView = useInView(cardRef, { once: true, margin: "-10%" });
+    
+    // State for video functionality
+    const [isHovered, setIsHovered] = useState(false);
+    
+    // Check if project has video sources
+    const hasVideo = video_webm || video_mp4;
+
+    // 2. Use an effect to control video playback based on hover state
+    useEffect(() => {
+        if (isHovered && videoRef.current) {
+            videoRef.current.play().catch(error => {
+                console.error("Video autoplay was prevented:", error);
+            });
+        } else if (videoRef.current) {
+            videoRef.current.pause();
+            videoRef.current.currentTime = 0; // Reset video to the start
+        }
+    }, [isHovered]); // This hook runs whenever `isHovered` changes
     
     const cardVariants = {
         hidden: { opacity: 0, y: 50 },
@@ -59,19 +78,66 @@ const ProjectCard = ({ project, index }) => {
             animate={isInView ? "visible" : "hidden"}
         >
             <motion.div 
-                className="sm:w-3xl w-auto"
+                className="sm:w-3xl w-auto relative overflow-hidden rounded-lg"
                 variants={imageVariants}
+                // 3. Simplified hover handlers
+                onMouseEnter={() => { if (hasVideo) setIsHovered(true); }}
+                onMouseLeave={() => { if (hasVideo) setIsHovered(false); }}
             >
+                {/* Static Image */}
                 <motion.img
                     src={image}
                     alt={`${title} Screenshot`}
-                    className="rounded-lg shadow-lg border border-white-700"
+                    className={`rounded-lg shadow-lg border border-white-700 transition-opacity duration-300 ${
+                        isHovered ? 'opacity-0' : 'opacity-100'
+                    }`}
                     whileHover={{ 
                         scale: 1.05,
                         boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)"
                     }}
                     transition={{ duration: 0.3 }}
                 />
+
+                {/* Video Preview (only if project has video) */}
+                {hasVideo && (
+                    <motion.video
+                        ref={videoRef}
+                        className={`absolute top-0 left-0 w-full h-full object-cover rounded-lg shadow-lg border border-white-700 transition-opacity duration-300 ${
+                            isHovered ? 'opacity-100' : 'opacity-0'
+                        }`}
+                        muted
+                        loop
+                        playsInline
+                        whileHover={{ 
+                            scale: 1.05,
+                            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)"
+                        }}
+                        transition={{ duration: 0.3 }}
+                        style={{ pointerEvents: 'none' }}
+                    >
+                        {/* Browser will automatically pick the best source it supports */}
+                        <source src={video_webm} type="video/webm" />
+                        <source src={video_mp4} type="video/mp4" />
+                    </motion.video>
+                )}
+
+                {/* Video indicator (small play icon overlay) */}
+                {hasVideo && !isHovered && (
+                    <motion.div
+                        className="absolute bottom-2 right-2 bg-black/50 rounded-full p-2 backdrop-blur-sm"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.5 }}
+                    >
+                        <svg 
+                            className="w-4 h-4 text-white" 
+                            fill="currentColor" 
+                            viewBox="0 0 20 20"
+                        >
+                            <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
+                        </svg>
+                    </motion.div>
+                )}
             </motion.div>
 
             <motion.div 
