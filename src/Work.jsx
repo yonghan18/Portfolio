@@ -72,7 +72,7 @@ const ProjectCard = ({ project, index }) => {
     return (
         <motion.div 
             ref={cardRef}
-            className="flex sm:flex-col flex-row items-center gap-6 p-6 mt-15"
+            className="flex flex-col sm:flex-col items-center gap-6 p-6 mt-15"
             variants={cardVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
