@@ -87,7 +87,7 @@ const Contact = () => {
                     </motion.a>
                     
                     <motion.a 
-                        href="https://linkedin.com/in/yonghan" 
+                        href="https://linkedin.com/in/yong-han-lee" 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="flex items-center justify-center w-16 h-16 bg-gray-800 rounded-full transition-colors duration-200"
@@ -104,7 +104,7 @@ const Contact = () => {
                     </motion.a>
                     
                     <motion.a 
-                        href="mailto:yonghan@example.com"
+                        href="mailto:yonghan1018@gmail.com"
                         className="flex items-center justify-center w-16 h-16 bg-gray-800 rounded-full transition-colors duration-200"
                         variants={socialVariants}
                         whileHover={{ 
