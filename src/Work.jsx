@@ -1,6 +1,6 @@
 import { projects } from './constants';
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react'; // 1. Ensure useEffect is imported
+import { useRef, useState, useEffect } from 'react';
 
 const ProjectCard = ({ project, index }) => {
     const { title, description, image, video_webm, video_mp4, technologies, liveUrl, sourceUrl } = project;
@@ -14,7 +14,7 @@ const ProjectCard = ({ project, index }) => {
     // Check if project has video sources
     const hasVideo = video_webm || video_mp4;
 
-    // 2. Use an effect to control video playback based on hover state
+    // Video playback control - runs whenever hover state changes
     useEffect(() => {
         if (isHovered && videoRef.current) {
             videoRef.current.play().catch(error => {
@@ -24,7 +24,7 @@ const ProjectCard = ({ project, index }) => {
             videoRef.current.pause();
             videoRef.current.currentTime = 0; // Reset video to the start
         }
-    }, [isHovered]); // This hook runs whenever `isHovered` changes
+    }, [isHovered]);
     
     const cardVariants = {
         hidden: { opacity: 0, y: 50 },
@@ -80,7 +80,7 @@ const ProjectCard = ({ project, index }) => {
             <motion.div 
                 className="sm:w-3xl w-auto relative overflow-hidden rounded-lg"
                 variants={imageVariants}
-                // 3. Simplified hover handlers
+                // Simple hover handlers - only activate if project has video
                 onMouseEnter={() => { if (hasVideo) setIsHovered(true); }}
                 onMouseLeave={() => { if (hasVideo) setIsHovered(false); }}
             >
@@ -115,7 +115,7 @@ const ProjectCard = ({ project, index }) => {
                         transition={{ duration: 0.3 }}
                         style={{ pointerEvents: 'none' }}
                     >
-                        {/* Browser will automatically pick the best source it supports */}
+                        {/* Browser automatically selects the best supported format */}
                         <source src={video_webm} type="video/webm" />
                         <source src={video_mp4} type="video/mp4" />
                     </motion.video>

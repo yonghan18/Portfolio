@@ -40,7 +40,7 @@ const About = () => {
 
     const techPerRow = techStack.length / 2;
 
-    // Split into 2 rows: first row gets 7 items, second row gets 6 items
+    // Split the tech stack into 2 equal rows for better visual balance
     const techRows = [
         techStack.slice(0, techPerRow),    
         techStack.slice(techPerRow, techStack.length)    
@@ -88,11 +88,10 @@ const About = () => {
     };
 
     const TechRow = ({ technologies, rowIndex }) => {
-        // Calculate drag constraints based on number of technologies
-        // Show 4 initially, allow dragging to see the rest
+        // Calculate drag constraints: show 4 items initially, drag to reveal more
         const visibleWidth = 4 * 136; // 4 items * (120px width + 16px gap)
-        const totalWidth = technologies.length * 136; // All items width
-        const maxDrag = Math.max(0, totalWidth - visibleWidth);
+        const totalWidth = technologies.length * 136; // Total width of all items
+        const maxDrag = Math.max(0, totalWidth - visibleWidth); // How far left user can drag
 
         return (
             <div className="overflow-hidden w-full">

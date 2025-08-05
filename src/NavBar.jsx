@@ -7,6 +7,7 @@ const NavItems = ({ onClick = () => {} }) => {
     e.preventDefault();
     onClick(); // Close mobile menu
     
+    // Check if it's an internal section link (starts with #) or external URL
     if (url.startsWith('#')) {
       const element = document.querySelector(url);
       if (element) {
@@ -16,6 +17,7 @@ const NavItems = ({ onClick = () => {} }) => {
         });
       }
     } else {
+      // Open external links in a new tab
       window.open(url, '_blank');
     }
   };
@@ -89,6 +91,7 @@ const NavBar = () => {
     }
   };
 
+  // Mobile menu uses maxHeight for smooth expand/collapse animation
   const mobileMenuVariants = {
     hidden: {
       opacity: 0,
@@ -149,6 +152,7 @@ const NavBar = () => {
             whileTap={{ scale: 0.9 }}
             transition={{ duration: 0.2 }}
           >
+            {/* Icon rotates 180 degrees when menu toggles */}
             <motion.img 
               src={isToggled ? "assets/close.svg" : "assets/menu.svg"} 
               alt="toggle" 
@@ -165,6 +169,7 @@ const NavBar = () => {
         </div>
       </div>
       
+      {/* AnimatePresence ensures smooth exit animations when menu closes */}
       <AnimatePresence>
         {isToggled && (
           <motion.div 

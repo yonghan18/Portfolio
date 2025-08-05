@@ -10,7 +10,7 @@ const TypeComponent = () => {
             preRenderFirstString={true}
             sequence={[
             'A CS Student',
-            1000,
+            1000,  // Wait 1 second before typing next phrase
             'A Web Developer',
             1000,
             'A Tech Enthusiast',
@@ -153,13 +153,14 @@ const Hero = () => {
         }
     };
 
+    // Complex pattern creates a realistic waving motion
     const waveVariants = {
         wave: {
             rotate: [0, 14, -8, 14, -4, 10, 0],
             transition: {
                 duration: 2.5,
                 repeat: Infinity,
-                transformOrigin: "70% 70%"
+                transformOrigin: "70% 70%"  // Rotation point mimics wrist position
             }
         }
     };
