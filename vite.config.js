@@ -5,6 +5,7 @@ import mkcert from "vite-plugin-mkcert";
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/Portfolio/', // Add this line - replace 'Portfolio' with your exact repository name
   server: {
     https: true,
   },
