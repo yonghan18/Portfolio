@@ -34,8 +34,8 @@ export const projects = [
         video_webm: "/assets/hiredly_composer.webm",
         video_mp4: "/assets/hiredly_composer.mp4",
         technologies: ["React", "TypeScript", "n8n", "OpenAI API", "Grammarly API"],
-        liveUrl: "#",
-        sourceUrl: "#",
+        liveUrl: "https://hiredly-composer.vercel.app/",
+        sourceUrl: "https://github.com/yonghan18/hiredly-composer",
         category: "Full Stack"
     },
     {
@@ -45,7 +45,7 @@ export const projects = [
         image: "/assets/portfolio.png",
         technologies: ["React", "Tailwind CSS", "Framer Motion", "JavaScript"],
         liveUrl: "#",
-        sourceUrl: "#",
+        sourceUrl: "https://github.com/yonghan18/Portfolio",
         category: "Frontend"
     },
     {
@@ -56,9 +56,9 @@ export const projects = [
         video_webm: "/assets/santorini_game.webm",
         video_mp4: "/assets/santorini_game.mp4",
         technologies: ["Java", "Java Swing", "OOP", "Design Patterns", "UML"],
-        liveUrl: "#",
+        liveUrl: "",
         sourceUrl: "#",
-        category: "Object-Oriented Programming"
+        category: "Desktop Application"
     },
     {
         id: 4,
@@ -68,9 +68,9 @@ export const projects = [
         video_webm: "/assets/nutritrack_app.webm",
         video_mp4: "/assets/nutritrack_app.mp4",
         technologies: ["Kotlin", "Jetpack Compose", "Retrofit", "RoomDB", "Gemini API", "MVVM"],
-        liveUrl: "#",
-        sourceUrl: "#",
-        category: "Frontend"
+        liveUrl: "",
+        sourceUrl: "https://github.com/yonghan18/Nutrion-Tracker",
+        category: "Mobile Application"
     },
     {
         id: 5,
@@ -80,7 +80,7 @@ export const projects = [
         video_webm: "/assets/guitar_hero.webm",
         video_mp4: "/assets/guitar_hero.mp4",
         technologies: ["TypeScript", "RxJS", "MVC Architecture", "FRP"],
-        liveUrl: "#",
+        liveUrl: "",
         sourceUrl: "#",
         category: "Web Game"
     }
