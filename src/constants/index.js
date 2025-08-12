@@ -89,14 +89,6 @@ export const projects = [
 export const achievements = [
     {
         id: 1,
-        title: "Academic Results",
-        organization: "Monash University Malaysia",
-        date: "2023-Present",
-        description: "CGPA: 3.96 | WAM: 85.52",
-        category: "Academic"
-    },
-    {
-        id: 2,
         title: "Software Engineer Intern",
         organization: "Hiredly X",
         date: "2025",
@@ -104,12 +96,20 @@ export const achievements = [
         category: "Internship"
     },
     {
-        id: 3,
+        id: 2,
         title: "Coding League - 2nd Runner Up",
         organization: "Monash Coding League",
         date: "2025",
         description: "Ranked first place in Round 1 and third place in Final Round over 60+ teams, demonstrating strong problem-solving and competitive programming skills.",
         category: "Competition"
+    },
+    {
+        id: 3,
+        title: "Full Scholarship Recipient",
+        organization: "Star Education Fund",
+        date: "2023 - Present",
+        description: "Selected as one of two candidates for Bachelor of Computer Science scholarship from over 2000 applications, recognizing academic excellence and potential.",
+        category: "Scholarship"
     },
     {
         id: 4,
@@ -121,11 +121,11 @@ export const achievements = [
     },
     {
         id: 5,
-        title: "Full Scholarship Recipient",
-        organization: "Star Education Fund",
-        date: "2023 - Present",
-        description: "Selected as one of two candidates for Bachelor of Computer Science scholarship from over 2000 applications, recognizing academic excellence and potential.",
-        category: "Scholarship"
+        title: "Basic React Certification",
+        organization: "Coursera",
+        date: "2025",
+        description: "Completed the React Basics course, gaining foundational knowledge in React development and building interactive web applications.",
+        category: "Certificate"
     },
     {
         id: 6,
@@ -134,5 +134,5 @@ export const achievements = [
         date: "2025",
         description: "Mastered advanced patterns for building scalable and performant React applications, focusing on performance optimization, custom hooks, and complex state management.",
         category: "Certificate"
-    },
+    }
 ]
