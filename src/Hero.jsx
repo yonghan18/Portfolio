@@ -20,8 +20,9 @@ const TypeComponent = () => {
             ]}
             wrapper="span"
             speed={50}
-            style={{ fontSize: '4.5rem', display:"inline-block",color: 'white', fontWeight: '800'
+            style={{ display:"inline-block", color: 'white', fontWeight: '800'
             }}
+            className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
             repeat={Infinity}
         />
     );
