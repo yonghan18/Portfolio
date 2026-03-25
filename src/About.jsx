@@ -11,7 +11,9 @@ import {
     SiKotlin,
     SiHaskell,
     SiPostgresql,
-    SiJetpackcompose
+    SiJetpackcompose,
+    SiSpringboot,
+    SiSpring
 } from 'react-icons/si';
 import { DiJava } from "react-icons/di";
 import { useState, useEffect, useRef } from 'react';
@@ -29,6 +31,8 @@ const About = () => {
         { name: "HTML/CSS", icon: SiHtml5, color: "text-orange-400" },
         { name: "MongoDB", icon: SiMongodb, color: "text-green-500" },
         { name: "Git", icon: SiGit, color: "text-red-400" },
+        { name: "Spring Boot", icon: SiSpringboot, color: "text-green-400" },
+        { name: "Spring Webflow", icon: SiSpring, color: "text-green-400" },
         { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-cyan-300" },
         { name: "Java", icon: DiJava, color: "text-red-400" },
         { name: "TypeScript", icon: SiTypescript, color: "text-blue-400" },

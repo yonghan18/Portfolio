@@ -33,7 +33,7 @@ export const projects = [
         image: "/assets/hiredly_composer.png",
         video_webm: "/assets/hiredly_composer.webm",
         video_mp4: "/assets/hiredly_composer.mp4",
-        technologies: ["React", "TypeScript", "n8n", "OpenAI API", "Grammarly API"],
+        technologies: ["React", "TypeScript", "n8n", "OpenAI API"],
         liveUrl: "https://hiredly-composer.vercel.app/",
         sourceUrl: "https://github.com/yonghan18/hiredly-composer",
         category: "Full Stack"
@@ -90,13 +90,21 @@ export const achievements = [
     {
         id: 1,
         title: "Software Engineer Intern",
+        organization: "iFAST",
+        date: "2026",
+        description: "Enhanced risk evaluating engine that supports multiple platform (FSMOne & B2B platforms), automated ECDD workflow, exposed to microservices codebase.",
+        category: "Internship"
+    },
+    {
+        id: 2,
+        title: "Software Engineer Intern",
         organization: "Hiredly X",
         date: "2025",
         description: "Led development of content automation tool for digital marketing team, automating SEO-optimized blog post generation and significantly reducing manual effort.",
         category: "Internship"
     },
     {
-        id: 2,
+        id: 3,
         title: "Coding League - 2nd Runner Up",
         organization: "Monash Coding League",
         date: "2025",
@@ -104,7 +112,15 @@ export const achievements = [
         category: "Competition"
     },
     {
-        id: 3,
+        id: 4,
+        title: "FYP Award - 2nd Runner Up",
+        organization: "Monash University Malaysia",
+        date: "2025",
+        description: "Ranked third place out of all Computer Science / Data Science Final Year Projects for FIT3162/FIT3164 in Semester 2, 2025 with DeepFake Detection System.",
+        category: "Competition"
+    },
+    {
+        id: 5,
         title: "Full Scholarship Recipient",
         organization: "Star Education Fund",
         date: "2023 - Present",
@@ -112,27 +128,27 @@ export const achievements = [
         category: "Scholarship"
     },
     {
-        id: 4,
+        id: 6,
         title: "PASS Leader",
         organization: "Monash University Malaysia",
         date: "2024",
         description: "Peer Assisted Study Sessions leader, helping fellow students with object-oriented programming concepts and academic support.",
         category: "Extracurricular"
     },
-    {
-        id: 5,
-        title: "Basic React Certification",
-        organization: "Coursera",
-        date: "2025",
-        description: "Completed the React Basics course, gaining foundational knowledge in React development and building interactive web applications.",
-        category: "Certificate"
-    },
-    {
-        id: 6,
-        title: "Advanced React Certification",
-        organization: "Coursera",
-        date: "2025",
-        description: "Mastered advanced patterns for building scalable and performant React applications, focusing on performance optimization, custom hooks, and complex state management.",
-        category: "Certificate"
-    }
+    // {
+    //     id: 6,
+    //     title: "Basic React Certification",
+    //     organization: "Coursera",
+    //     date: "2025",
+    //     description: "Completed the React Basics course, gaining foundational knowledge in React development and building interactive web applications.",
+    //     category: "Certificate"
+    // },
+    // {
+    //     id: 7,
+    //     title: "Advanced React Certification",
+    //     organization: "Coursera",
+    //     date: "2025",
+    //     description: "Mastered advanced patterns for building scalable and performant React applications, focusing on performance optimization, custom hooks, and complex state management.",
+    //     category: "Certificate"
+    // }
 ]
